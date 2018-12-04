@@ -40,21 +40,20 @@ def compare a, b
     enca, encb = [a, b].map {|s| encode s}
     lena, lenb = [enca, encb].map {|s| s.length}
 
-    # throw exception here?
     return nil if (lena - lenb).abs > 3
 
     minRating = rate(lena + lenb)
 
     enca, encb = removeDups(enca.chars, encb.chars).transpose
-    puts "Enca, encb: #{enca}, #{encb}"
     [enca, encb].each { |arr| arr.delete(nil) }
+
     if (enca and encb)
         enca, encb = removeDups(enca.reverse, encb.reverse).transpose
     else # no differing characters, it's a match
         return true
     end
+
     [enca, encb].each { |arr| arr.delete(nil) }
-    puts "Enca, encb: #{enca}, #{encb}"
 
     longer = enca.length > encb.length ? enca : encb
     simRating = 6 - longer.length
