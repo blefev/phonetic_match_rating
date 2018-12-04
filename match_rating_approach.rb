@@ -1,6 +1,4 @@
-Alpha = ('A'..'Z').to_a.join('')
 Vowels = 'AEIOU'
-Consonants = Alpha.sub(/[#{Vowels}]/, '')
 
 def rate lengthSum
     if lengthSum <= 4
